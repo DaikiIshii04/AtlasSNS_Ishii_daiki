@@ -67,6 +67,7 @@ use PHPUnit\Framework\Constraint\Exception as ExceptionConstraint;
 use PHPUnit\Framework\Constraint\ExceptionCode;
 use PHPUnit\Framework\Constraint\ExceptionMessage;
 use PHPUnit\Framework\Constraint\ExceptionMessageRegularExpression;
+use PHPUnit\Framework\Constraint\LogicalOr;
 use PHPUnit\Framework\Error\Deprecated;
 use PHPUnit\Framework\Error\Error;
 use PHPUnit\Framework\Error\Notice;
@@ -514,6 +515,24 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
     }
 
     /**
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between setUp() and test.
+     */
+    protected function assertPreConditions(): void
+    {
+    }
+
+    /**
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between test and tearDown().
+     */
+    protected function assertPostConditions(): void
+    {
+    }
+
+    /**
      * This method is called after each test.
      */
     protected function tearDown(): void
@@ -581,22 +600,22 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             case Deprecated::class:
                 $this->addWarning('Support for using expectException() with PHPUnit\Framework\Error\Deprecated is deprecated and will be removed in PHPUnit 10. Use expectDeprecation() instead.');
 
-            break;
+                break;
 
             case Error::class:
                 $this->addWarning('Support for using expectException() with PHPUnit\Framework\Error\Error is deprecated and will be removed in PHPUnit 10. Use expectError() instead.');
 
-            break;
+                break;
 
             case Notice::class:
                 $this->addWarning('Support for using expectException() with PHPUnit\Framework\Error\Notice is deprecated and will be removed in PHPUnit 10. Use expectNotice() instead.');
 
-            break;
+                break;
 
             case WarningError::class:
                 $this->addWarning('Support for using expectException() with PHPUnit\Framework\Error\Warning is deprecated and will be removed in PHPUnit 10. Use expectWarning() instead.');
 
-            break;
+                break;
         }
         // @codeCoverageIgnoreEnd
 
@@ -1530,12 +1549,22 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             }
 
             if ($this->expectedException !== null) {
-                $this->assertThat(
-                    $exception,
-                    new ExceptionConstraint(
-                        $this->expectedException
-                    )
-                );
+                if ($this->expectedException === Error::class) {
+                    $this->assertThat(
+                        $exception,
+                        LogicalOr::fromConstraints(
+                            new ExceptionConstraint(Error::class),
+                            new ExceptionConstraint(\Error::class)
+                        )
+                    );
+                } else {
+                    $this->assertThat(
+                        $exception,
+                        new ExceptionConstraint(
+                            $this->expectedException
+                        )
+                    );
+                }
             }
 
             if ($this->expectedExceptionMessage !== null) {
@@ -1733,7 +1762,8 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
 
         $mockedMethodsThatDontExist = array_filter(
             $methods,
-            static function (string $method) use ($reflector) {
+            static function (string $method) use ($reflector)
+            {
                 return !$reflector->hasMethod($method);
             }
         );
@@ -1924,6 +1954,10 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
      */
     protected function prophesize(?string $classOrInterface = null): ObjectProphecy
     {
+        if (!class_exists(Prophet::class)) {
+            throw new Exception('This test uses TestCase::prophesize(), but phpspec/prophecy is not installed. Please run "composer require --dev phpspec/prophecy".');
+        }
+
         $this->addWarning('PHPUnit\Framework\TestCase::prophesize() is deprecated and will be removed in PHPUnit 10. Please use the trait provided by phpspec/prophecy-phpunit.');
 
         if (is_string($classOrInterface)) {
@@ -1941,24 +1975,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
     protected function createResult(): TestResult
     {
         return new TestResult;
-    }
-
-    /**
-     * Performs assertions shared by all tests of a test case.
-     *
-     * This method is called between setUp() and test.
-     */
-    protected function assertPreConditions(): void
-    {
-    }
-
-    /**
-     * Performs assertions shared by all tests of a test case.
-     *
-     * This method is called between test and tearDown().
-     */
-    protected function assertPostConditions(): void
-    {
     }
 
     /**
@@ -2287,7 +2303,6 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
             $excludeList->addClassNamePrefix('SebastianBergmann\Invoker');
             $excludeList->addClassNamePrefix('SebastianBergmann\Template');
             $excludeList->addClassNamePrefix('SebastianBergmann\Timer');
-            $excludeList->addClassNamePrefix('Symfony');
             $excludeList->addClassNamePrefix('Doctrine\Instantiator');
             $excludeList->addClassNamePrefix('Prophecy');
             $excludeList->addStaticAttribute(ComparatorFactory::class, 'instance');
