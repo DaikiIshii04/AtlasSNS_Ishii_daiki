@@ -16,7 +16,7 @@
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
+Auth::routes();
 
 
 //ログアウト中のページ
@@ -30,12 +30,22 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-Route::get('/top','PostsController@index');
-Route::get('/profile','UsersController@profile');
+Route::get('/top','PostsController@index')->middleware('auth');
+Route::get('/profile','UsersController@profile')->middleware('auth');
 
-Route::get('/search','UsersController@search');
+Route::get('/search','UsersController@search')->middleware('auth');
 
-Route::get('/follow-list','FollowsController@followList');
-Route::get('/follower-list','FollowsController@followerList');
+Route::get('/follow-list','FollowsController@followList')->middleware('auth');
+Route::get('/follower-list','FollowsController@followerList')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//つぶやき登録
+Route::post('/top','PostsController@post')->middleware('auth');
+//つぶやき削除
+Route::post('/destroy/{id}','PostsController@destroy')->middleware('auth');
+//つぶやき更新
+Route::post('posts/update', 'PostsController@update');
+
+// //ユーザー検索
+// Route::post('/search','UsersController@search')->middleware('auth');
