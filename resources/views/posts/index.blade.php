@@ -18,7 +18,7 @@
      @foreach($posts as $post)<!-- 画面表示　-->
     <div style="padding:2rem; border-top: solid 1px    #E6ECF0; border-bottom: solid 1px #E6ECF0;">
           <div>{{ $post->post }}</div>
-                <!-- 編集ボタン 参考サイトのまんま-->
+                <!-- 編集ボタン 参考サイトのまま-->
       <td>
         <div class="content">
           <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">編集</a>
