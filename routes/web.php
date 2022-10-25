@@ -45,7 +45,9 @@ Route::post('/top','PostsController@post')->middleware('auth');
 //つぶやき削除
 Route::post('/destroy/{id}','PostsController@destroy')->middleware('auth');
 //つぶやき更新
-Route::post('posts/update', 'PostsController@update');
-
+Route::post('post/update', 'PostsController@update');
+//フォローIDをコントローラーへ渡す
+Route::get('/follow/{id}','FollowsController@follow');
+Route::get('/unfollow/{id}','FollowsController@unfollow');
 // //ユーザー検索
 // Route::post('/search','UsersController@search')->middleware('auth');

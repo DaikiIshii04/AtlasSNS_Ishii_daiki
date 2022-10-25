@@ -31,6 +31,7 @@ class UsersController extends Controller
         return view('users.search', compact('users', 'search'));
     }
 
+}
     // public function search(Request $request){
     //     $keyword = $request->input('keyword');
     //     $query=User::query();
@@ -38,4 +39,3 @@ class UsersController extends Controller
     //     $user=$query->where('username','like','%'.$keywords.'%')->post();
     //     return view('users.search',compact('keyword'));
     // }
-}

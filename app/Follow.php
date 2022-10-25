@@ -7,24 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Follow extends Model
 {
     //
-        // フォローされているユーザー取得
-        public function follows()
-    {
-        return $this->belongsToMany(
-            'App\Models\User',
-            'follows',
-            'followed_user_id',
-            'following_user_id'
-        );
-    }
-    // フォローしているユーザーを取得
-        public function follow()
-    {
-        return $this->belongsToMany(
-            'App\Models\User',
-            'follows',
-            'following_user_id',
-            'followed_user_id'
-        );
-    }
+    protected $primaryKey = [
+        'following_id',
+        'followed_id'
+    ];
+    protected $fillable = [
+        'following_id',
+        'followed_id'
+    ];
+    public $timestamps = false;
+    public $incrementing = false;
    }

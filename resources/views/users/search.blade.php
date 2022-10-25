@@ -14,9 +14,14 @@
 @foreach($users as $user)
 <tr>
   <td>{{$user->username}}</td>
-  <button type="submit">フォローする</button>
 </tr>
+<!-- フォローしていたらフォロー解除 -->
+@if(auth()->user()->isFollowing($user->id))
+<a class="un_follow" href="/unfollow/{{$user->id}}">フォロー解除</a>
+<!-- フォローしていなければフォロー -->
+@else
+<a class="follow" href="/follow/{{$user->id}}">フォローする</a>
+@endif
 @endforeach
-
 
 @endsection
