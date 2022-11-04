@@ -2,6 +2,10 @@
 
 @section('content')
 
+@foreach ($errors->all() as $error)
+<li>{{$error}}</li>
+@endforeach
+
 {!! Form::open(['url' => 'register']) !!}
 
 <h2>新規ユーザー登録</h2>

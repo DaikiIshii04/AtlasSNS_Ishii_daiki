@@ -25,15 +25,15 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{ Auth::user()->username }}さん<img src="images/arrow.png"></p>
+        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+            <div id="ac-wrapper">
+                <div id="profile-wrapper">
+                    <p class="accordion-btn">{{ Auth::user()->username }}さん<button type="button" class="accordion"><span class="inn"></span></button><img src="{{ asset('/storage/images/' . Auth::user()->images) }}"></p>
                 <div>
-                <ul>
+                <ul class="accordion-content">
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/login">ログアウト</a></li>
+                    <li><a href="/logout">ログアウト</a></li>
                 </ul>
             </div>
         </div>
@@ -47,12 +47,14 @@
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <!-- 認証ユーザーのフォロー数呼び出し -->
+                <p>{{ Auth::user()->follows()->get()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <!-- 認証ユーザーのフォロワー数呼び出し -->
+                <p>{{ Auth::user()->followers()->get()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
@@ -61,7 +63,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+ <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script> -->
 </body>
 </html>

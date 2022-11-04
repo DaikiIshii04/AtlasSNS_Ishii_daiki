@@ -9,32 +9,34 @@
    <input type="text" class="form" name="post"
    placeholder="投稿内容を入力して下さい">
    <button type="submit">投稿</button>
-     @if($errors->first('tweet')) <!-- 追加エラー画面 -->
-        <p style="font-size: 0.7rem; color: red; padding: 0 2rem;">※{{$errors->first('tweet')}}</p>
-        @endif
+   @foreach ($errors->all() as $error)
+<li>{{$error}}</li>
+@endforeach
  </form>
 </div>
 <div class="Posts-wrapper">
-     @foreach($posts as $post)<!-- 画面表示　-->
-    <div style="padding:2rem; border-top: solid 1px    #E6ECF0; border-bottom: solid 1px #E6ECF0;">
-          <div>{{ $post->post }}</div>
-                <!-- 編集ボタン 参考サイトのまま-->
+     @foreach($posts as $post)
+  <div class="tweet-area">
+    <tr>
+      <td>
+        {{$post->user->username}}
+      </td>
+      <p>
+        <td>
+          {{$post->post}}
+        </td>
+      </p>
+      <!-- 編集ボタン 参考サイトのまんま-->
       <td>
         <div class="content">
           <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">編集</a>
         </div>
       </td>
-
-<!--削除-->
-      <form
-        style="display: inline-block;"
-        method="POST"
-        action="/destroy/{{$post->id}}"
-      >
-      @csrf
-      <button class="btn btn-danger"onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</button>
-      </form>
-    </div>
+      <!-- 削除ボタン -->
+      <td><a href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">削除</a>
+      </td>
+      </tda>
+    </tr>
  @endforeach
      <!-- モーダル内 -->
     <div class="modal js-modal">

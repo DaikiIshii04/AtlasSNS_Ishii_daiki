@@ -1,3 +1,10 @@
+// アコーディオンメニュー
+$(function () {
+  $('.accordion-btn').on('click', function () {
+    $(this).next().slideToggle();
+    $(this).toggleClass("open");
+  });
+});
 $(function () {
   $('.js-modal-open').on('click', function () {
     // モーダル表示

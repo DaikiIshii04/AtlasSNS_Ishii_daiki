@@ -12,10 +12,22 @@ class FollowsController extends Controller
 {
     //
     public function followList(){
-        return view('follows.followList');
+        // followsへユーザー情報を代入
+        $follows = User::get();
+        // postsへ投稿情報を代入
+        $posts = Post::get();
+        // following_idへフォローしている人のIDを代入
+        $following_id=Auth::user()->follows()->pluck('followed_id');
+        // 上で取得した投稿情報内の投稿者のIDとフォローしている人のIDが一致したもののみ取得
+        $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
+        return view('follows.followList',compact('follows','posts'));
     }
     public function followerList(){
-        return view('follows.followerList');
+        $followers=User::get();
+        $posts=Post::get();
+        $followed_id=Auth::user()->followers()->pluck('following_id');
+        $posts=Post::with('user')->whereIn('user_id',$followed_id)->get();
+        return view('follows.followerList',compact('followers','posts'));
     }
     //受け取ったフォローIDをfollowsテーブルへ格納
     public function follow($id){
