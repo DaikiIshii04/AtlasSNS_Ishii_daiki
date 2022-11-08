@@ -10,10 +10,9 @@
 @foreach($follows as $follow)
 <!-- フォローしているユーザーのみ表示 -->
 @if(auth()->user()->isFollowing($follow->id))
-<tr>
 <!-- フォローしているユーザーの画像のみ表示 -->
-  <td>{{$follow->images}}</td>
-</tr>
+  <!-- <td>{{$follow->images}}</td> -->
+  <img src="{{ asset('/storage/images/' .$follow->images) }}">
 @endif
 @endforeach
 <!-- ユーザーの投稿を表示 -->
