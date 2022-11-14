@@ -10,17 +10,22 @@
 @foreach($followers as $follower)
 <!-- フォローしているユーザーのみ表示 -->
 @if(auth()->user()->isFollowed($follower->id))
-<tr>
 <!-- フォローしているユーザーの画像のみ表示 -->
-  <td>{{$follower->images}}</td>
-</tr>
+<a class="follower-list-images" href="/{{$follower->id}}/users-profile">
+  <img class="icon" src="{{ asset('/storage/images/' .$follower->images)}}">
+</a>
 @endif
 @endforeach
 <!-- ユーザーの投稿を表示 -->
-@foreach($posts as $post)
-<p>名前：{{ $post->user->username }}</p>
-<p>投稿内容：{{ $post->post }}</p>
-
-@endforeach
+ <div class="follower_post">
+ @foreach($posts as $post)
+<a class="follower-list-images" href="/{{$post->id}}/users-profile">
+ <img class="icon" src="{{ asset('storage/images/' . $post->user->images)}}" >
+</a>
+ <p>{{ $post->user->username }}</p>
+ <p>{{ $post->updated_at}}</p>
+ <p>{{ $post->post }}</p>
+ @endforeach
+ </div>
 </div>
 @endsection

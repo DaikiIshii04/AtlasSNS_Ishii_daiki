@@ -25,10 +25,10 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+        <h1><a href="/top"><img src="{{asset('images/atlas.png')}}"></a></h1>
             <div id="ac-wrapper">
                 <div id="profile-wrapper">
-                    <p class="accordion-btn">{{ Auth::user()->username }}さん<button type="button" class="accordion"><span class="inn"></span></button><img src="{{ asset('storage/images/' . Auth::user()->images) }}"></p>
+                    <p class="accordion-btn">{{ Auth::user()->username }}さん<button type="button" class="accordion"><span class="inn"></span></button><img class="icon" src="{{ asset('storage/images/' . Auth::user()->images) }}"></p>
                 <div>
                 <ul class="accordion-content">
                     <li><a href="/top">ホーム</a></li>

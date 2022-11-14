@@ -9,6 +9,12 @@ header {
     background: #186AC9;
 }
 
+/* アイコン */
+.icon {
+    width: 100%;
+    max-width: 50px;
+}
+
 /* main content */
 #row {
     display: flex;
@@ -53,4 +59,22 @@ header {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+}
+
+/* login画面 */
+.login_content {
+    background-color: #ccd8ff;
+    padding: 50px 0;
+}
+
+.login_area {
+    width: 100px;
+    height: 100px;
+    background-color: #4773ff;
+    margin: 0 auto;
+}
+
+/* サイドバー */
+#side-bar {
+    position: sticky;
 }

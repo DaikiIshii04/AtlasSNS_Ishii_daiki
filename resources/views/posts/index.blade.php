@@ -8,7 +8,9 @@
    <input type="hidden" name="user_id" value="">
    <input type="text" class="form" name="post"
    placeholder="投稿内容を入力して下さい">
-   <button type="submit">投稿</button>
+   <button type="submit">
+     <img src="{{asset('images/post.png')}}">
+  </button>
    @foreach ($errors->all() as $error)
 <li>{{$error}}</li>
 @endforeach
@@ -16,28 +18,27 @@
 </div>
 <div class="Posts-wrapper">
      @foreach($posts as $post)
-  <div class="tweet-area">
+  <div class="post-area">
     <tr>
       <td>
         {{$post->user->username}}
       </td>
+      <p>{{$post->updated_at}}</p>
       <p>
         <td>
           {{$post->post}}
         </td>
       </p>
-      <!-- 編集ボタン 参考サイトのまんま-->
+      <!-- 編集ボタン 削除ボタン-->
       <td>
         <div class="content">
-          <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">編集</a>
-        </div>
+          <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">
+            <img class="icon" src="{{asset('images/edit.png')}}" alt="">
+          </a>
+        <a href="/destroy/{{$post->id}}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')"><img class="icon" src="{{asset('images/trash-h.png')}}" alt=""></a>
       </td>
-      <!-- 削除ボタン -->
-      <td><a href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">削除</a>
-      </td>
-      </tda>
     </tr>
- @endforeach
+    </div>
      <!-- モーダル内 -->
     <div class="modal js-modal">
       <div class="modal__bg js-modal-close"></div>
@@ -53,4 +54,5 @@
     </div>
   </div>
 </div>
+ @endforeach
 @endsection

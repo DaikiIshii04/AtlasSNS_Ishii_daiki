@@ -46,7 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //つぶやき登録
 Route::post('/top','PostsController@post')->middleware('auth');
 //つぶやき削除
-Route::post('/destroy/{id}','PostsController@destroy')->middleware('auth');
+Route::get('/destroy/{id}','PostsController@destroy')->middleware('auth');
 //つぶやき更新
 Route::post('post/update', 'PostsController@update');
 //フォローIDをコントローラーへ渡す
@@ -54,3 +54,5 @@ Route::get('/follow/{id}','FollowsController@follow');
 Route::get('/unfollow/{id}','FollowsController@unfollow');
 // //ユーザー検索
 // Route::post('/search','UsersController@search')->middleware('auth');
+// プロフィール遷移（他ユーザー）
+Route::get('/{id}/users-profile', 'UsersController@usersprofile');

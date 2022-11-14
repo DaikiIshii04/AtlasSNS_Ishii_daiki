@@ -13,6 +13,7 @@
 <!--検索結果表示-->
 @foreach($users as $user)
 <tr>
+  <img class="icon" src ="{{asset('storage/images/'.$user->images)}}">
   <td>{{$user->username}}</td>
 </tr>
 <!-- フォローしていたらフォロー解除 -->

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Post;
+use App\Follow;
 class UsersController extends Controller
 {
     //
@@ -27,7 +29,7 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:2|max:12',
             'mail' => 'required|string|email|min:5|max:40',
-            'password' => 'required|string|min:8|max:20|confirmed',
+            'password' => 'required|string|min:8|max:20|confirmed|alpha_num',
             'password_confirmation' => 'required',
             'bio' => 'max:150',
         ]);
@@ -62,6 +64,7 @@ class UsersController extends Controller
         public function search(Request $request)
     {
         $search = $request->input('search');
+        $id=Auth::id();
         $query = User::query();
         if (!empty($search)) {
             $query->where('username', 'LIKE', "%{$search}%");
@@ -70,13 +73,23 @@ class UsersController extends Controller
             \Session::forget('search');
             $users = User::all();
         }
-        $users = $query->get();
+        // whereでid(UsersTableのカラムid)と上で定義した認証ユーザーidが一致した人を除くユーザー情報をGET
+        $users = $query->where('id','!=',$id)->get();
         // 検索ワード表示
 
 
         return view('users.search', compact('users', 'search'));
     }
 
+    // $idでクリックされたユーザーidを取得
+    public function usersprofile($id)
+    {
+        // $user_idへUser情報（特定の）を代入
+        $user_id = User::find($id);
+        //$user_postへ送られてきたidとPostsテーブルのuser_idが同じデータを全て取得
+        $user_post = Post::with('user')->whereIn('user_id',$user_id)->get();
+        return view('users.userProfile',compact('user_id','user_post'));
+    }
 }
     // public function search(Request $request){
     //     $keyword = $request->input('keyword');

@@ -9,6 +9,7 @@
 @endif
 {!! Form::open(['url' => '/profile','files'=>true]) !!}
 
+<img class = "icon" src = "{{asset('storage/images/'.Auth::user()->images)}}">
 <p>{{ Form::label('username','user name')}}</p>
 <p>{{ Form::text('username',$auth->username,['class' => 'input'])}}</p>
 
