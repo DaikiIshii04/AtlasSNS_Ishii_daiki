@@ -19,6 +19,7 @@
 <div class="Posts-wrapper">
      @foreach($posts as $post)
   <div class="post-area">
+ <img class="icon" src="{{ asset('storage/images/' . $post->user->images)}}" >
     <tr>
       <td>
         {{$post->user->username}}
@@ -29,6 +30,7 @@
           {{$post->post}}
         </td>
       </p>
+      @endforeach
       <!-- 編集ボタン 削除ボタン-->
       <td>
         <div class="content">
@@ -54,5 +56,4 @@
     </div>
   </div>
 </div>
- @endforeach
 @endsection

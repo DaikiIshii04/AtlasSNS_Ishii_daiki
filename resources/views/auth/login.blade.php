@@ -3,20 +3,18 @@
 @section('content')
 
 {!! Form::open(['url' => 'login']) !!}
-<section class="login_content">
 <div class="login_area">
-<p>AtlasSNSへようこそ</p>
+<p>AtlasSNSようこそ</p>
 
 {{ Form::label('e-mail') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
+<p>{{ Form::label('password') }}
 {{ Form::password('password',['class' => 'input']) }}
-
-{{ Form::submit('ログイン') }}
+</p>
+{{ Form::submit('ログイン',['class'=>'login-submit']) }}
 
 <p><a href="/register">新規ユーザーの方はこちら</a></p>
 </div>
-</section>
 {!! Form::close(['url' => 'register']) !!}
 
 @endsection

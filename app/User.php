@@ -36,6 +36,7 @@ class User extends Authenticatable
 // フォローしているユーザIDから、フォローされているユーザIDにアクセス
    return $this->belongsToMany(User::class, "follows", "following_id", "followed_id");
 }
+
     // フォローしているか
     // Int型（数値のみ）誤った情報を事前にブロックできる
     public function isFollowing(Int $user_id)

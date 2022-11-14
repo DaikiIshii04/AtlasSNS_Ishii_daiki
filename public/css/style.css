@@ -62,16 +62,22 @@ header {
 }
 
 /* login画面 */
-.login_content {
-    background-color: #ccd8ff;
-    padding: 50px 0;
+.header_area {
+    text-align: center;
 }
 
-.login_area {
+.header_box {
+    padding-top: 250px;
+}
+
+.header-box img {
     width: 100px;
-    height: 100px;
-    background-color: #4773ff;
-    margin: 0 auto;
+}
+
+.header-box p {
+    color: #fff;
+    padding-bottom: 40px;
+    font-size: 20px;
 }
 
 /* サイドバー */

@@ -18,6 +18,7 @@ class PostsController extends Controller
         $following_post=Auth::user()->follows()->pluck('followed_id');
         $posts = Post::with('user')
         ->whereIn('user_id', $following_post)
+        // orWhereで＋認証ユーザーもゲット
         ->orWhere('user_id',Auth::id())
         ->get();
         return view('posts.index',compact('posts'));
