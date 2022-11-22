@@ -30,8 +30,9 @@
           {{$post->post}}
         </td>
       </p>
-      @endforeach
       <!-- 編集ボタン 削除ボタン-->
+      <!-- ポストテーブルのユーザーIDとログインユーザーIDが一致していた場合のみ表示（＝＝＝）で一致しているかどうか -->
+      @if($post->user_id === Auth::user()->id)
       <td>
         <div class="content">
           <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">
@@ -53,7 +54,8 @@
         </form>
         <a class="js-modal-close" href="">閉じる</a>
       </div>
-    </div>
+    </div>@endif
   </div>
+  @endforeach
 </div>
 @endsection

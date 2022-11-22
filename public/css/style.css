@@ -7,6 +7,7 @@ body {} */
 /* header */
 header {
     background: #186AC9;
+    height: 70px;
 }
 
 /* アイコン */
@@ -61,26 +62,79 @@ header {
     width: 60%;
 }
 
-/* login画面 */
-.header_area {
-    text-align: center;
+/* トップ画面 */
+/* アトラスロゴ */
+#head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
 }
 
-.header_box {
-    padding-top: 250px;
+.atlas-logo {
+    width: 80px;
+    padding-left: 20px;
 }
 
-.header-box img {
-    width: 100px;
+#ac-wrapper {
+    position: relative;
 }
 
-.header-box p {
+.profile-accordion {
+    width: 210px;
+    padding: 5px;
     color: #fff;
-    padding-bottom: 40px;
+    font-size: 17px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-accordion::before {
+    content: "∧";
+    position: absolute;
+    left: 110px;
+}
+
+.profile-accordion.is-active::before {
+    content: "v";
+}
+
+.profile-accordion-ul.is-active {
+    display: block;
+}
+
+.profile-accordion-li {
+    text-align: center;
+    background: #fff;
+    height: 30px;
+    padding-top: 30px;
+}
+
+.profile-accordion-li a {
+    color: #3e3e3e;
     font-size: 20px;
 }
 
-/* サイドバー */
-#side-bar {
-    position: sticky;
+.profile-accordion-middle {
+    text-align: center;
+    background: rgb(39, 17, 233);
+    height: 30px;
+    padding-top: 30px;
+}
+
+.profile-accordion-middle a {
+    color: #fff;
+    font-size: 20px;
+}
+
+.profile-accordion-ul {
+    display: none;
+    border: 2px solid #000;
+    width: 180px;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    z-index: 10;
 }

@@ -1,11 +1,14 @@
 // アコーディオンメニュー
 $(function () {
-  $('.accordion-btn').on('click', function () {
-    $(this).next().slideToggle();
-    $(this).toggleClass("open");
+  $('.profile-accordion').on('click', function (e) {
+    e.preventDefault();
+    $('.profile-accordion').toggleClass('is-active');
+    $('.profile-accordion-ul').toggleClass('is-active');
+
+    return false;
   });
-});
-$(function () {
+  // });
+  // $(function () {
   $('.js-modal-open').on('click', function () {
     // モーダル表示
     $('.js-modal').fadeIn();

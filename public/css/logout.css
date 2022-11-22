@@ -1,10 +1,146 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+}
+
+/* login画面 */
+.header_area {
+    text-align: center;
+}
+
+.header_box {
+    padding-top: 150px;
+}
+
+.header_box img {
+    width: 150px;
+}
+
+.header_box p {
+    color: #fff;
+    padding-bottom: 40px;
+    font-size: 30px;
+}
+
+/* ログインフォーム */
+.login_area {
+    text-align: center;
+    width: 200px;
+    height: 220px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login_font {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* フォームの文字 */
+.Form,
+label {
+    display: block;
+    text-align: left;
+    color: #fff;
+    font-size: 15px;
+}
+
+/*各フォームボックス */
+.form_box {
+    text-align: left;
+    padding-top: 15px;
+}
+
+/* フォーム窓 */
+.Form,
+input {
+    height: 25px;
+    width: 200px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 0.5px solid;
+}
+
+/* ログイン.登録ボタン */
+.login-submit {
+    background: #ef1d1d;
+    border: none;
+    color: #eaeaea;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    margin-right: auto;
+    margin-left: 105px;
+    margin-top: 10px;
+}
+
+/* 新規ユーザーテキスト */
+.added_text {
+    padding-top: 30px;
+}
+
+/* 新規登録画面 */
+.register_area {
+    text-align: center;
+    width: 200px;
+    height: 330px;
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 登録完了画面 */
+#clear {
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    padding: 50px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#clear p {
+    color: #fff;
+}
+
+.welcome-area {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.welcome {
+    font-weight: 700;
+}
+
+.welcome-font {
+    font-size: 100%;
+    width: max-content;
+}
+
+.added-submit {
+    background: #ef1d1d;
+    border: none;
+    color: #eaeaea;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    margin-top: 30px;
+    padding-top: 18px;
+    margin-right: auto;
+    margin-left: 25px;
 }

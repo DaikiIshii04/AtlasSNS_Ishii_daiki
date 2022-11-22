@@ -25,19 +25,20 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="{{asset('images/atlas.png')}}"></a></h1>
+         <h1><a href="/top"><img class="atlas-logo" src="{{asset('images/atlas.png')}}"></a></h1>
             <div id="ac-wrapper">
-                <div id="profile-wrapper">
-                    <p class="accordion-btn">{{ Auth::user()->username }}さん<button type="button" class="accordion"><span class="inn"></span></button><img class="icon" src="{{ asset('storage/images/' . Auth::user()->images) }}"></p>
+                <div class="profile-accordion is-active">
+                    <p class="auth-name">{{ Auth::user()->username }}さん</p>
+                    <img class="icon" src="{{ asset('storage/images/' . Auth::user()->images) }}">
                 <div>
-                <ul class="accordion-content">
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
             </div>
         </div>
     </header>
+                <ul class="profile-accordion-ul">
+                    <li class="profile-accordion-li"><a href="/top">HOME</a></li>
+                    <li class="profile-accordion-middle"><a href="/profile">プロフィール編集</a></li>
+                    <li class="profile-accordion-li"><a href="/logout">ログアウト</a></li>
+                </ul>
     <div id="row">
         <div id="container">
             @yield('content')

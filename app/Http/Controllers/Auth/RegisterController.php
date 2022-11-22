@@ -52,7 +52,7 @@ class RegisterController extends Controller
             // //連想配列
             'username' => 'required|string|max:12|min:2',
             'mail' => 'required|string|email|min:5|max:40|unique:users',
-            //alpha_num＝半角英数字
+            // alpha_num＝半角英数字
             'password' => 'required|string|min:8|max:20|confirmed|alpha_num',
             'password_confirmation' => 'required',
         ]);
