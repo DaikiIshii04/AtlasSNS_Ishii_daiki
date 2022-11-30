@@ -76,6 +76,7 @@ header {
     padding-left: 20px;
 }
 
+/* アコーディオン↓ */
 #ac-wrapper {
     position: relative;
 }
@@ -132,9 +133,312 @@ header {
 .profile-accordion-ul {
     display: none;
     border: 2px solid #000;
-    width: 180px;
+    width: 280px;
     position: absolute;
     top: 70px;
     right: 0px;
     z-index: 10;
+}
+
+/* アコーディオン　fin */
+
+/* サイドバー */
+#confirm {
+    padding: 10px;
+    border-bottom: 1px solid #727272;
+}
+
+.side-follow {
+    display: flex;
+    margin-top: 20px;
+}
+
+.side-follow p:nth-child(2) {
+    margin-left: 50px;
+}
+
+.follow-btn {
+    margin-top: 10px;
+    margin-left: 50px;
+    background: rgb(39, 17, 233);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 110px;
+}
+
+.follow-btn a {
+    font-size: 12px;
+    color: #fff;
+}
+
+.search-btn {
+    background: rgb(39, 17, 233);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+    margin: 25px auto;
+}
+
+.search-btn a {
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* サイドバー fin */
+
+/* 投稿フォーム */
+.post-main {
+    display: flex;
+    align-items: center;
+    padding: 10px 50px 50px;
+    height: 100px;
+    border-bottom: 3px solid #a9a9a9;
+    position: relative;
+}
+
+.post-input {
+    border: none;
+    width: 200px;
+    height: 100px;
+    margin-left: 30px;
+}
+
+.post-input::placeholder {
+    color: #dedddd;
+}
+
+.post-submit {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.post-submit img {
+    width: 90px;
+    height: 90px;
+    margin-left: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}
+
+/* 投稿フォーム　fin */
+/* 投稿一覧 */
+.post-area {
+    display: flex;
+    position: relative;
+    padding: 5px 5px 5px 80px;
+    border-bottom: 1px solid #000;
+}
+
+.post-icon {
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.post-posts {
+    width: 100%;
+    height: 100px;
+    padding: 10px 10px 10px 10px;
+}
+
+.posts-area {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.content-modal {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+
+/* 投稿一覧　fin */
+/* 検索フォーム */
+.search-form-area {
+    border-bottom: 3px solid #a9a9a9;
+    height: 120px;
+}
+
+.search-form-area input {
+    margin-top: 30px;
+    margin-left: 15px;
+    height: 50px;
+    width: 400px;
+    border-width: 3px;
+}
+
+/* 検索欄 */
+.search-area {
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #3e3e3e;
+}
+
+.search-submit {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.search-submit img {
+    width: 90px;
+    height: 90px;
+    margin-left: 40px;
+}
+
+/* 検索ユーザーネーム */
+.search-users-table {
+    width: 400px;
+    margin: 50px auto;
+}
+
+
+.search-table {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-table li {
+    margin-top: 20px;
+}
+
+/* 行間 */
+.search-lists {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+}
+
+.search-lists img {
+    margin-right: 20px;
+}
+
+.unfollow-button {
+    background: red;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.unfollow-button a {
+    color: #fff;
+
+}
+
+.follow-button-red {
+    background: #186AC9;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.follow-button-red a {
+    color: #fff;
+}
+
+/* プロフィール編集 */
+
+.profile-contents {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.profile-contents li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-logo {
+    position: relative;
+}
+
+.profile-logo img {
+    position: absolute;
+    top: -10px;
+    left: -70px;
+}
+
+.profile-text {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 30px;
+}
+
+
+.profile-images {
+    padding-top: 15px;
+    width: 96px;
+    height: 65px;
+}
+
+.images-area {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 80px;
+
+}
+
+.profile-submit {
+    width: 150px;
+    margin: 60px auto;
+    display: block;
+    height: 40px;
+    background: rgb(243, 60, 60);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* フォローリスト */
+.follow-form {
+    border-bottom: 3px solid #a9a9a9;
+    height: 120px;
+    display: flex;
+    margin-top: 30px;
+}
+
+.follow-title {
+    padding-left: 100px;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.follow-icon-list {
+    margin-left: 30px;
+    width: 500px;
+}
+
+.follow-post {
+    display: flex;
+    position: relative;
+    padding: 5px 5px 5px 80px;
+    border-bottom: 1px solid #000;
 }

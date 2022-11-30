@@ -2,12 +2,14 @@
 
 @section('content')
 <div id="follow_list">
+  <div class="follow-form">
   <form action="/follow-list" method="get">
     {{csrf_field()}}
   </form>
-  <p class="follow_list_title">Follow List</p>
+  <p class="follow-title">Follow List</p>
   <!-- ＄followsで全ユーザー取得 -->
-@foreach($follows as $follow)
+<div class="follow-icon-list">
+  @foreach($follows as $follow)
 <!-- フォローしているユーザーのみ表示 -->
 @if(auth()->user()->isFollowing($follow->id))
 <!-- フォローしているユーザーの画像のみ表示 -->
@@ -16,16 +18,25 @@
 </a>
 @endif
 @endforeach
+</div>
+</div>
+
 <!-- ユーザーの投稿を表示 -->
- <div class="follow_post">
+
  @foreach($posts as $post)
+ <div class="follow-post">
 <a class="follow-list-images" href="/{{$post->id}}/users-profile">
  <img class="icon" src="{{ asset('storage/images/' . $post->user->images) }}">
 </a>
- <p>{{ $post->user->username }}</p>
- <p>{{ $post->updated_at}}</p>
- <p>{{ $post->post }}</p>
+    <div class="post-posts">
+      <div class="posts-area">
+        <div class="posts-name">{{$post->user->username}}</div>
+        <div class="posts-date">{{$post->updated_at}}</div>
+      </div>
+        {{$post->post}}
+</div>
+  </div>
  @endforeach
- </div>
+
 </div>
 @endsection

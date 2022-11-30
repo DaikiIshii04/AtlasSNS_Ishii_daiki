@@ -46,7 +46,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //つぶやき登録
 Route::post('/top','PostsController@post')->middleware('auth');
 //つぶやき削除
-Route::get('/destroy/{id}','PostsController@destroy')->middleware('auth');
+Route::get('/top/{id}/delete', 'PostsController@delete');
+// Route::get('/top/{id}/destroy','PostsController@destroy')->middleware('auth');
 //つぶやき更新
 Route::post('post/update', 'PostsController@update');
 //フォローIDをコントローラーへ渡す

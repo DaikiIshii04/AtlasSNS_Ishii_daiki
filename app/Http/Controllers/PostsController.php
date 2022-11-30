@@ -50,13 +50,13 @@ class PostsController extends Controller
     }
 
     //つぶやき削除
-            public function destroy($id)
+            public function delete($id)
         {
             // $post_id=Post::find($id);
             // $post_id->delete();
             \DB::table('posts')
-            ->where('user_id', $id)
-            ->where('user_id',Auth::id())
+            ->where('id', $id)
+            // ->where('user_id',Auth::id())
             ->delete();
             return back();
         }
