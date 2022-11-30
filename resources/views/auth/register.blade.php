@@ -19,11 +19,11 @@
 </div>
 <div class="form_box">
 {{ Form::label('password') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::password('password',null,['class' => 'input']) }}
 </div>
 <div class="form_box">
 {{ Form::label('password confirm') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+{{ Form::password('password_confirmation',null,['class' => 'input']) }}
 </div>
 
 {{ Form::submit('REGISTER',['class'=>'login-submit']) }}

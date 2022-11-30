@@ -13,16 +13,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            [
+
                 'username' => 'tanakataru',
                 'mail' => 'tanaka01',
-                'password' =>$password = Hash::make ("tanaka01")
-            ],[
-                'username'=>'',
-                'mail' => '',
-                'password' => ''
-            ]
-
+                'password' =>$password = Hash::make ("tanaka01"),
         ]);
     }
 
