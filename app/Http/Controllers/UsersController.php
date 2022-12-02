@@ -58,7 +58,7 @@ class UsersController extends Controller
             $auth->images = basename($image_path);
         }
         $auth->update();
-        return redirect('profile');
+        return redirect('top');
     }
 
         public function search(Request $request)
